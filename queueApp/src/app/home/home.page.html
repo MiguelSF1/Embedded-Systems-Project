@@ -1,0 +1,23 @@
+<ion-content>
+  <div class="container">
+    @if (isConnecting) {
+      <div style="text-align: center"><ion-spinner class="spinner"></ion-spinner></div>
+    } @else {
+      @if (inQueue) {
+        <ion-label class="label">Mesa em atendimento de ultimo numero</ion-label>
+        <div class="row">{{ currentBranch == '' ? '-' : currentBranch }}</div>     
+
+        <ion-label class="label">Numero de cliente em atendimento</ion-label>
+        <div class="row">{{ currentNumber > 0 ? currentNumber : '-' }}</div>     
+
+        <ion-label class="label">Numero de cliente</ion-label>
+        <div class="row">{{ queueNumber }}</div>
+
+        <ion-label class="label">Codigo de cliente</ion-label>
+        <div class="row">{{ code }}</div>
+      } @else {
+        <ion-button id="button" (click)="enterQueue()">Entrar na fila</ion-button>
+      }
+    }
+  </div>
+</ion-content>
